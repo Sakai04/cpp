@@ -1,35 +1,38 @@
-#include <stdio.h>
-#include <string.h>
-
-int pointer_strcmp(const char *s1, const char *s2) {
-    // 포인터를 이용하여 한 글자씩 비교
-    while (*s1 && (*s1 == *s2)) {
-        s1++;
-        s2++;
-    }
-    return *(unsigned char *)s1 - *(unsigned char *)s2;
-}
+#include <iostream>
+using namespace std;
 
 int main() {
-    char str1[1000], str2[1000];
+    const int SIZE = 100;
+    char str1[SIZE], str2[SIZE];
 
-    // 방법 b) fgets를 이용한 문자열 입력
-    if (fgets(str1, sizeof(str1), stdin) != NULL) {
-        size_t len = strlen(str1);
-        if (len > 0 && str1[len - 1] == '\n')
-            str1[len - 1] = '\0';
+    cout << "첫 번째 문자열을 입력하세요: ";
+    cin.getline(str1, SIZE);
+
+    cout << "두 번째 문자열을 입력하세요: ";
+    cin.getline(str2, SIZE);
+
+    // 포인터를 사용하여 문자열 비교
+    char *p1 = str1;
+    char *p2 = str2;
+    bool equal = true;
+
+    // 각 문자 비교
+    while(*p1 != '\0' && *p2 != '\0') {
+        if(*p1 != *p2) {
+            equal = false;
+            break;
+        }
+        p1++;
+        p2++;
     }
-    if (fgets(str2, sizeof(str2), stdin) != NULL) {
-        size_t len = strlen(str2);
-        if (len > 0 && str2[len - 1] == '\n')
-            str2[len - 1] = '\0';
-    }
-    
-    // 포인터를 이용한 비교 결과 출력
-    if (pointer_strcmp(str1, str2) == 0)
-        printf("Same\n");
+    // 문자열의 길이가 다를 경우
+    if(*p1 != *p2)
+        equal = false;
+
+    if(equal)
+        cout << "두 문자열은 같습니다." << endl;
     else
-        printf("Different\n");
-        
+        cout << "두 문자열은 다릅니다." << endl;
+
     return 0;
 }
