@@ -4,7 +4,7 @@ using namespace std;
 int main() {
     int arr[4];
     
-    cout << "네 개의 정수 입력 : " << flush;
+    cout << "네 개의 정수 입력 : ";
     for (int i = 0; i < 4; i++) {
         cin >> arr[i];
     }
