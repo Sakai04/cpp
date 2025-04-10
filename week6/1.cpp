@@ -9,7 +9,6 @@ int main() {
     int n;
     cin >> n;
 
-    // --- vector를 이용한 동적 배열 ---
     cout << "== vector array ==" << endl;
     vector<float> varr(n);
 
