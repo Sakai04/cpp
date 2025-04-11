@@ -23,7 +23,7 @@ int main() {
         cout << "varr[" << i << "]=" << varr[i] << endl;
     }
 
-    // --- new를 이용한 동적 배열 ---
+    
     cout << "== new array ==" << endl;
     float* narr = new float[n];
 
